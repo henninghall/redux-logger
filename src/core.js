@@ -45,6 +45,7 @@ function printBuffer(buffer, options) {
     colors,
     level,
     diff,
+    useDefaultCss,
   } = options;
 
   const isUsingDefaultFormatter = typeof options.titleFormatter === 'undefined';
@@ -75,11 +76,12 @@ function printBuffer(buffer, options) {
 
     // Render
     try {
+      const shouldStyleTitle = colors.title && (isUsingDefaultFormatter || useDefaultCss);
       if (isCollapsed) {
-        if (colors.title && isUsingDefaultFormatter) {
+        if (shouldStyleTitle) {
           logger.groupCollapsed(`%c ${title}`, ...headerCSS);
         } else logger.groupCollapsed(title);
-      } else if (colors.title && isUsingDefaultFormatter) {
+      } else if (shouldStyleTitle) {
         logger.group(`%c ${title}`, ...headerCSS);
       } else {
         logger.group(title);
