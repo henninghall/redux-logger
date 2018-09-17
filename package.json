@@ -1,5 +1,5 @@
 {
-  "name": "redux-logger",
+  "name": "redux-logger-default-css",
   "version": "3.0.6",
   "description": "Logger for Redux",
   "main": "dist/redux-logger.js",
